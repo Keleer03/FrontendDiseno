@@ -2,7 +2,7 @@
   <v-container class="fill-height" fluid>
     <v-row align="center" justify="center">
       <v-col cols="12" sm="8" md="6">
-        <h1>Bienvenido a página CACTEC</h1>
+        <h1>Bienvenido a la página de CACTEC</h1>
         <v-btn color="primary" class="ma-2" @click="navigateTo('clientes')">Clientes</v-btn>
         <v-btn color="primary" class="ma-2" @click="navigateTo('cuentas')">Cuentas</v-btn>
         <v-btn color="primary" class="ma-2" @click="navigateTo('transferencias')"

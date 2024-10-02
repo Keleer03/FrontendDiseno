@@ -1,7 +1,6 @@
 <template>
   <v-form ref="formClienteJuridico" v-model="valid" lazy-validation>
     <v-container>
-      <!-- Título -->
       <v-row>
         <v-col cols="12">
           <v-card class="pa-3 green lighten-2">
@@ -9,7 +8,6 @@
           </v-card>
         </v-col>
       </v-row>
-
       <v-row>
         <v-col cols="12" md="6" class="pa-2">
           <v-text-field
@@ -21,47 +19,40 @@
         </v-col>
         <v-col cols="12" md="6" class="pa-2">
           <v-text-field
-            label="Cedula Juridica"
+            label="Cédula Jurídica"
             v-model="clienteJuridico.cedulaJuridica"
-            :rules="[rules.required]"
-            required
-          />
-        </v-col>
-        <v-col cols="12" md="6" class="pa-2">
-          <v-text-field
-            label="Razon social"
-            v-model="clienteJuridico.razonSocial"
-            :rules="[rules.required]"
+            :rules="[rules.required, rules.cedulaJuridica]"
             required
           />
         </v-col>
         <v-col cols="12" md="12" class="pa-2">
           <v-text-field
-            label="Correo electronico"
+            label="Correo Electrónico"
             v-model="clienteJuridico.correoElectronico"
-            :rules="[rules.required]"
+            :rules="[rules.required, rules.email]"
             required
           />
         </v-col>
         <v-col cols="12" md="6" class="pa-2">
           <v-text-field
-            label="Numero telefonico"
+            label="Número Telefónico"
             v-model="clienteJuridico.numeroTelefono"
-            :rules="[rules.required]"
+            :rules="[rules.required, rules.telefono]"
             required
           />
         </v-col>
         <v-col cols="12" md="6" class="pa-2">
-          <v-text-field
-            label="Categoría de cliente"
+          <v-select
+            label="Categoría de Cliente"
             v-model="clienteJuridico.categoriaCliente"
+            :items="['Fisico', 'Juridico']"
             :rules="[rules.required]"
             required
           />
         </v-col>
         <v-col cols="12" md="6" class="pa-2">
           <v-text-field
-            label="Tipo de negocio"
+            label="Tipo de Negocio"
             v-model="clienteJuridico.tipoNegocio"
             :rules="[rules.required]"
             required
@@ -69,8 +60,8 @@
         </v-col>
         <v-col cols="12" md="6" class="pa-2">
           <v-text-field
-            label="Cantidad de cuentas"
-            v-model="clienteJuridico.cantidadCuentas"
+            label="Razón Social"
+            v-model="clienteJuridico.razonSocial"
             :rules="[rules.required]"
             required
           />
@@ -93,40 +84,33 @@
 import { ref } from 'vue'
 
 const valid = ref(false)
-const clienteFisico = ref({
+const clienteJuridico = ref({
   nombreCliente: '',
   cedulaJuridica: '',
-  fechaNacimiento: '',
   razonSocial: '',
   correoElectronico: '',
-  telefono: '',
-  categoriaCliente: ''
+  numeroTelefono: '',
+  categoriaCliente: '',
+  tipoNegocio: ''
 })
 
 const rules = {
-  required: (value) => !!value || 'Campo requerido'
+  required: (value) => !!value || 'Campo requerido',
+  ///Quitar con validaciones del BACK END!!!!!!1
+  email: (value) => /.+@.+\..+/.test(value) || 'Correo electrónico inválido',
+  telefono: (value) => /^\d{8,10}$/.test(value) || 'El número debe tener entre 8 y 10 dígitos',
+  cedulaJuridica: (value) =>
+    /^\d{10}$/.test(value) || 'Cédula jurídica inválida (debe tener 10 dígitos)'
 }
 
 const submitForm = () => {
   const form = ref(null)
   if (form.value.validate()) {
-    console.log('Cliente físico creado:', clienteFisico.value)
-
-    // Aquí podrías enviar los datos al servidor. Este es un ejemplo de cómo sería.
-    /*
-        axios.post('/api/clientes/fisico', clienteFisico.value)
-          .then(response => {
-            console.log('Cliente físico guardado con éxito:', response.data)
-          })
-          .catch(error => {
-            console.error('Error al crear cliente físico:', error)
-          })
-        */
+    console.log('Cliente jurídico creado:', clienteJuridico.value)
   }
 }
 
 const goBack = () => {
-  // Lógica para regresar a la página anterior
   console.log('Regresar a la página anterior')
 }
 </script>

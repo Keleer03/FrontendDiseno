@@ -18,6 +18,7 @@
             required
           />
         </v-col>
+
         <v-col cols="12" md="6" class="pa-2">
           <v-text-field
             label="Cédula de identidad"
@@ -26,42 +27,51 @@
             required
           />
         </v-col>
+
         <v-col cols="12" md="6" class="pa-2">
           <v-text-field
             label="Fecha de nacimiento"
             v-model="clienteFisico.fechaNacimiento"
+            type="date"
             :rules="[rules.required]"
             required
           />
         </v-col>
+
         <v-col cols="12" md="6" class="pa-2">
           <v-text-field
             label="Número de teléfono"
             v-model="clienteFisico.numeroTelefono"
-            :rules="[rules.required]"
+            :rules="[rules.required, rules.phone]"
             required
           />
         </v-col>
+
         <v-col cols="12" md="12" class="pa-2">
           <v-text-field
             label="Correo electrónico"
             v-model="clienteFisico.correoElectronico"
-            :rules="[rules.required]"
+            :rules="[rules.required, rules.email]"
             required
           />
         </v-col>
+
         <v-col cols="12" md="6" class="pa-2">
           <v-text-field
             label="Cantidad de cuentas"
             v-model="clienteFisico.cantidadCuentas"
-            :rules="[rules.required]"
+            type="number"
+            :rules="[rules.required, rules.positiveNumber]"
             required
           />
         </v-col>
+
+        <!-- Modificación del campo Categoría -->
         <v-col cols="12" md="6" class="pa-2">
-          <v-text-field
+          <v-select
             label="Categoría de cliente"
             v-model="clienteFisico.categoriaCliente"
+            :items="['Físico', 'Jurídico']"
             :rules="[rules.required]"
             required
           />
@@ -83,6 +93,7 @@
 <script setup>
 import { ref } from 'vue'
 
+const formClienteFisico = ref(null)
 const valid = ref(false)
 const clienteFisico = ref({
   nombreCliente: '',
@@ -95,29 +106,28 @@ const clienteFisico = ref({
 })
 
 const rules = {
-  required: (value) => !!value || 'Campo requerido'
+  required: (value) => !!value || 'Campo requerido',
+  isInteger: (value) => Number.isInteger(Number(value)) || 'Debe ser un número entero'
 }
 
 const submitForm = () => {
-  const form = ref(null)
-  if (form.value.validate()) {
+  if (formClienteFisico.value.validate()) {
     console.log('Cliente físico creado:', clienteFisico.value)
 
-    //Ejemplo para controlador
+    // Alógica para enviar los datos al back-end
     /*
-      axios.post('/api/clientes/fisico', clienteFisico.value)
-        .then(response => {
-          console.log('Cliente físico guardado con éxito:', response.data)
-        })
-        .catch(error => {
-          console.error('Error al crear cliente físico:', error)
-        })
-      */
+    axios.post('/api/clientes/fisico', clienteFisico.value)
+      .then(response => {
+        console.log('Cliente físico guardado con éxito:', response.data)
+      })
+      .catch(error => {
+        console.error('Error al crear cliente físico:', error)
+      })
+    */
   }
 }
 
 const goBack = () => {
-  // No hecho porqu aun no se conecta
   console.log('Regresar a la página anterior')
 }
 </script>
@@ -137,7 +147,7 @@ const goBack = () => {
 
 @media (min-width: 1200px) {
   .v-container {
-    max-width: 1000px;
+    max-width: 1200px;
     padding: 0 20px;
   }
 }
