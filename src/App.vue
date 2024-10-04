@@ -1,14 +1,10 @@
 <template>
   <div id="app">
-    <v-row align="center" justify="center">
-      <v-col cols="12">
-        <v-app>
-          <v-main>
-            <router-view />
-          </v-main>
-        </v-app>
-      </v-col>
-    </v-row>
+    <v-app>
+      <v-main>
+        <router-view />
+      </v-main>
+    </v-app>
   </div>
 </template>
 
@@ -23,27 +19,18 @@
   color: #2c3e50;
   height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 }
 
-.v-row {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.v-col {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .v-app {
-  height: 100%;
+  flex: 1;
 }
 
 .v-main {
-  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>

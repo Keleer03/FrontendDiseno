@@ -19,6 +19,9 @@ import CambiarCorreo from '@/views/CambiarCorreo.vue'
 import ConsultarEstatus from '@/views/ConsultarEstatus.vue'
 import ConsultaCTESaldo from '@/views/ConsultaCTESaldo.vue'
 import EliminarCuenta from '@/views/EliminarCuenta.vue'
+import MenuClientes from '@/views/MenuClientes.vue'
+import MenuCuentas from '@/views/MenuCuentas.vue'
+import MenuTransacciones from '@/views/MenuTransacciones.vue'
 
 const routes = [
   {
@@ -120,6 +123,21 @@ const routes = [
     path: '/eliminar-cuenta',
     name: 'EliminarCuenta',
     component: EliminarCuenta
+  },
+  {
+    path: '/menu-clientes',
+    name: 'MenuClientes',
+    component: MenuClientes
+  },
+  {
+    path: '/menu-transacciones',
+    name: 'MenuTransacciones',
+    component: MenuTransacciones
+  },
+  {
+    path: '/menu-cuentas',
+    name: 'MenuCuentas',
+    component: MenuCuentas
   }
 ]
 

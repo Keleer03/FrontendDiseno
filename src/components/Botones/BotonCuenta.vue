@@ -1,5 +1,5 @@
 <template>
-  <v-btn color="primary" @click="goToEstatus"> Salir</v-btn>
+  <v-btn color="primary" @click="goToMenuCuentas"> Cuentas</v-btn>
 </template>
 
 <script setup>
@@ -7,8 +7,8 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-const goToEstatus = () => {
-  router.push('/')
+const goToMenuCuentas = () => {
+  router.push('/menu-cuentas')
 }
 </script>
 

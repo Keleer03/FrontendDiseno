@@ -9,7 +9,6 @@
         </v-col>
       </v-row>
 
-      <!-- Identidad del cliente -->
       <v-row>
         <v-col cols="12" md="6" class="pa-2">
           <v-text-field
@@ -21,14 +20,12 @@
         </v-col>
       </v-row>
 
-      <!-- Botón para validar identidad -->
       <v-row>
         <v-col cols="12" class="pa-2">
           <v-btn color="primary" @click="validarIdentidad">Validar Identidad</v-btn>
         </v-col>
       </v-row>
 
-      <!-- Datos del cliente si la identidad es válida -->
       <v-row v-if="datosCliente">
         <v-col cols="12" class="pa-2">
           <v-card>
@@ -43,7 +40,6 @@
         </v-col>
       </v-row>
 
-      <!-- Nueva dirección de correo electrónico -->
       <v-row v-if="datosCliente">
         <v-col cols="12" md="6" class="pa-2">
           <v-text-field
