@@ -2,7 +2,7 @@
   <v-container class="fill-height" fluid>
     <v-row align="center" justify="center">
       <v-col cols="12">
-        <h1 class="title">Funcionalidades para los clientes</h1>
+        <h1 class="title title-background">Funcionalidades para los clientes</h1>
       </v-col>
     </v-row>
 
@@ -12,9 +12,7 @@
           <v-icon large color="black">mdi-account-plus</v-icon>
         </v-row>
         <v-row align="center" justify="center">
-          <v-btn color="primary" class="ma-4 custom-btn" @click="navigateTo('crear-cliente-fisico')"
-            >Cliente Físico</v-btn
-          >
+          <BotonRegistrarClienteFisico />
         </v-row>
       </v-col>
 
@@ -23,12 +21,7 @@
           <v-icon large color="black">mdi-domain-plus</v-icon>
         </v-row>
         <v-row align="center" justify="center">
-          <v-btn
-            color="primary"
-            class="ma-4 custom-btn"
-            @click="navigateTo('crear-cliente-juridico')"
-            >Cliente Jurídico</v-btn
-          >
+          <BotonRegistrarClienteJuridico />
         </v-row>
       </v-col>
     </v-row>
@@ -39,12 +32,7 @@
           <v-icon large color="black">mdi-phone</v-icon>
         </v-row>
         <v-row align="center" justify="center">
-          <v-btn
-            color="primary"
-            class="ma-4 custom-btn"
-            @click="navigateTo('cambiar-numero-telefonico')"
-            >Cambiar Teléfono</v-btn
-          >
+          <BotonCambiarTelefono />
         </v-row>
       </v-col>
 
@@ -53,12 +41,7 @@
           <v-icon large color="black">mdi-email</v-icon>
         </v-row>
         <v-row align="center" justify="center">
-          <v-btn
-            color="primary"
-            class="ma-4 custom-btn"
-            @click="navigateTo('cambiar-direccion-correo')"
-            >Cambiar Correo</v-btn
-          >
+          <BotonCambiarCorreo />
         </v-row>
       </v-col>
     </v-row>
@@ -69,12 +52,7 @@
           <v-icon large color="black">mdi-bank</v-icon>
         </v-row>
         <v-row align="center" justify="center">
-          <v-btn
-            color="primary"
-            class="ma-4 custom-btn long-btn"
-            @click="navigateTo('consultar-cuentas')"
-            >Consultar Cuentas y Saldos Respectivos</v-btn
-          >
+          <BotonConsulCuentaConSuSaldo />
         </v-row>
       </v-col>
     </v-row>
@@ -82,10 +60,10 @@
     <v-row align="center" justify="center" class="button-row">
       <v-col cols="12">
         <v-row align="center" justify="center">
-          <v-icon large color="black">mdi-arrow-left-bold-circle-outline</v-icon>
+          <v-icon large color="black">mdi-logout</v-icon>
         </v-row>
         <v-row align="center" justify="center">
-          <v-btn color="primary" class="ma-4 custom-btn" @click="navigateTo('atras')">Atrás</v-btn>
+          <BotonSalir />
         </v-row>
       </v-col>
     </v-row>
@@ -93,14 +71,12 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
-import { VIcon } from 'vuetify/components'
-
-const router = useRouter()
-
-const navigateTo = (route) => {
-  router.push({ name: route })
-}
+import BotonSalir from '@/components/Botones/BotonSalir.vue'
+import BotonRegistrarClienteFisico from '@/components/Botones/BotonRegistrarClienteFisico.vue'
+import BotonRegistrarClienteJuridico from '@/components/Botones/BotonRegistrarClienteJuridico.vue'
+import BotonCambiarTelefono from '@/components/Botones/BotonCambiarTelefono.vue'
+import BotonCambiarCorreo from '@/components/Botones/BotonCambiarCorreo.vue'
+import BotonConsulCuentaConSuSaldo from '@/components/Botones/BotonConsulCuentaConSuSaldo.vue'
 </script>
 
 <style scoped>
@@ -129,20 +105,13 @@ const navigateTo = (route) => {
 
 .v-btn {
   width: 100%;
-  max-width: 350px;
+  max-width: 550px;
   font-size: 1.25rem;
   padding: 30px;
   white-space: normal;
   word-wrap: break-word;
   text-overflow: ellipsis;
   text-align: center;
-}
-
-.custom-btn {
-  color: #2c3e50;
-  transition:
-    transform 0.3s,
-    background-color 0.3s;
 }
 
 .custom-btn:hover {

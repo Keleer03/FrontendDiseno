@@ -4,7 +4,7 @@
       <v-row>
         <v-col cols="12">
           <v-card class="pa-3 teal lighten-2">
-            <h1 class="white--text">Consultar Estado de Cuenta</h1>
+            <h1 class="white--text">Consultar Estado de Cuenta en colones</h1>
           </v-card>
         </v-col>
       </v-row>

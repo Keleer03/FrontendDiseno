@@ -1,5 +1,5 @@
 <template>
-  <v-btn color="primary" @click="goToEstatus"> Salir</v-btn>
+  <v-btn color="red" @click="goToPagPrincipal"> Salir</v-btn>
 </template>
 
 <script setup>
@@ -7,7 +7,7 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-const goToEstatus = () => {
+const goToPagPrincipal = () => {
   router.push('/')
 }
 </script>

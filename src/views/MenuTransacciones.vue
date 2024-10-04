@@ -6,35 +6,25 @@
       </v-col>
     </v-row>
 
-    <!-- Primera fila de botones -->
     <v-row align="center" justify="center" class="button-row">
       <v-col cols="12" sm="4" class="text-center">
         <v-icon large color="black">mdi-cash-plus</v-icon>
-        <v-btn color="primary" class="ma-2 custom-btn" @click="navigateTo('deposito-colones')">
-          Depósito ₡
-        </v-btn>
+        <BotonRealizarDepositoCols />
       </v-col>
       <v-col cols="12" sm="4" class="text-center">
         <v-icon large color="black">mdi-cash-plus</v-icon>
-        <v-btn color="primary" class="ma-2 custom-btn" @click="navigateTo('deposito-dolares')">
-          Depósito $
-        </v-btn>
+        <BotonRealizarDepositoDols />
       </v-col>
       <v-col cols="12" sm="4" class="text-center">
         <v-icon large color="black">mdi-cash-minus</v-icon>
-        <v-btn color="primary" class="ma-2 custom-btn" @click="navigateTo('retiro-colones')">
-          Retiro ₡
-        </v-btn>
+        <BotonRealizarRetiroCols />
       </v-col>
     </v-row>
 
-    <!-- Segunda fila de botones -->
     <v-row align="center" justify="center" class="button-row">
       <v-col cols="12" sm="4" class="text-center">
         <v-icon large color="black">mdi-cash-minus</v-icon>
-        <v-btn color="primary" class="ma-2 custom-btn" @click="navigateTo('retiro-dolares')">
-          Retiro $
-        </v-btn>
+        <BotonRealizarRetiroDols />
       </v-col>
       <v-col cols="12" sm="4" class="text-center">
         <v-icon large color="black">mdi-transfer</v-icon>
@@ -44,57 +34,39 @@
       </v-col>
       <v-col cols="12" sm="4" class="text-center">
         <v-icon large color="black">mdi-file-document-outline</v-icon>
-        <v-btn
-          color="primary"
-          class="ma-2 custom-btn"
-          @click="navigateTo('consultar-transacciones')"
-        >
-        Transacciones hechas
-        </v-btn>
+        <BotonTransaccionesHechas />
       </v-col>
     </v-row>
 
-    <!-- Tercera fila de botones -->
     <v-row align="center" justify="center" class="button-row">
       <v-col cols="12" sm="5" class="text-center">
         <v-icon large color="black">mdi-currency-eur</v-icon>
-        <v-btn
-          color="primary"
-          class="ma-2 custom-btn"
-          @click="navigateTo('consultar-saldo-colones')"
-        >
-          Consultar saldo ₡
-        </v-btn>
+        <BotonConsultarSaldoCols />
       </v-col>
       <v-col cols="12" sm="5" class="text-center">
         <v-icon large color="black">mdi-currency-usd</v-icon>
-        <v-btn
-          color="primary"
-          class="ma-2 custom-btn"
-          @click="navigateTo('consultar-saldo-dolares')"
-        >
-          Consultar saldo $
-        </v-btn>
+        <BotonConsultarSaldoDols />
       </v-col>
     </v-row>
 
     <v-row align="center" justify="center" class="button-row">
       <v-col cols="12" sm="8" class="text-center">
-        <v-icon large color="black">mdi-arrow-left-bold</v-icon>
-        <v-btn color="primary" class="ma-2 custom-btn" @click="navigateTo('atras')"> Atrás </v-btn>
+        <v-icon large color="black">mdi-logout</v-icon>
+        <BotonSalir />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
-
-const navigateTo = (route) => {
-  router.push({ name: route })
-}
+import BotonRealizarDepositoCols from '@/components/Botones/BotonRealizarDepositoCols.vue'
+import BotonRealizarDepositoDols from '@/components/Botones/BotonRealizarDepositoDols.vue'
+import BotonConsultarSaldoCols from '@/components/Botones/BotonConsultarSaldoCols.vue'
+import BotonConsultarSaldoDols from '@/components/Botones/BotonConsultarSaldoDols.vue'
+import BotonRealizarRetiroCols from '@/components/Botones/BotonRealizarRetiroCols.vue'
+import BotonRealizarRetiroDols from '@/components/Botones/BotonRealizarRetiroDols.vue'
+import BotonTransaccionesHechas from '@/components/Botones/BotonTransaccionesHechas.vue'
+import BotonSalir from '@/components/Botones/BotonSalir.vue'
 </script>
 
 <style scoped>
@@ -127,7 +99,7 @@ const navigateTo = (route) => {
 
 .v-btn {
   width: 100%;
-  max-width: 300px;
+  max-width: 300px; /* Ajustar el ancho máximo según se necesite */
   font-size: 1.25rem;
   padding: 15px;
   white-space: normal;

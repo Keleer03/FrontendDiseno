@@ -1,5 +1,5 @@
 <template>
-  <v-btn color="primary" @click="goToCambiarPin"> Cambiar Pin</v-btn>
+  <v-btn color="primary" @click="goToCrearCuenta"> Crear Cuenta</v-btn>
 </template>
 
 <script setup>
@@ -7,8 +7,8 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-const goToCambiarPin = () => {
-  router.push('/cambiar-pin')
+const goToCrearCuenta = () => {
+  router.push('/crear-cuenta')
 }
 </script>
 

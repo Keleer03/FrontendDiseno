@@ -9,62 +9,47 @@
     <v-row align="center" justify="space-between" class="button-row">
       <v-col cols="12" sm="4">
         <v-icon large color="black">mdi-account-plus</v-icon>
-        <v-btn color="primary" class="ma-2 custom-btn" @click="navigateTo('crear-cuenta')"
-          >Crear cuenta</v-btn
-        >
+        <BotonCrearCuenta />
       </v-col>
       <v-col cols="12" sm="4">
         <v-icon large color="black">mdi-currency-eur</v-icon>
-        <v-btn color="primary" class="ma-2 custom-btn" @click="navigateTo('consultar-estado-crc')"
-          >Consultar estado ₡</v-btn
-        >
+        <BotonEstadoCuentaCols />
       </v-col>
       <v-col cols="12" sm="4">
         <v-icon large color="black">mdi-currency-usd</v-icon>
-        <v-btn color="primary" class="ma-2 custom-btn" @click="navigateTo('consultar-estado-usd')"
-          >Consultar estado $</v-btn
-        >
+        <BotonEstadoCuentaDols />
       </v-col>
     </v-row>
 
     <v-row align="center" justify="space-between" class="button-row">
       <v-col cols="12" sm="4">
         <v-icon large color="black">mdi-key-change</v-icon>
-        <v-btn color="primary" class="ma-2 custom-btn" @click="navigateTo('cambiar-pin')"
-          >Cambiar pin</v-btn
-        >
+        <BotonCambiarPin />
       </v-col>
-      <v-col cols="12" sm="4">
+      <v-col cols="12" sm="5">
         <v-icon large color="black">mdi-account-remove</v-icon>
-        <v-btn
-          color="primary"
-          class="ma-2 custom-btn long-btn"
-          @click="navigateTo('eliminar-cuenta')"
-          >Eliminar cuenta</v-btn
-        >
+        <BotonEliminarCuenta />
       </v-col>
     </v-row>
 
     <v-row align="center" justify="center" class="button-row">
-      <v-col cols="12" sm="4">
-        <v-icon large color="black">mdi-arrow-left-bold</v-icon>
-        <v-btn color="primary" class="ma-2 custom-btn long-btn" @click="navigateTo('atras')"
-          >Atrás</v-btn
-        >
+      <v-col cols="12" sm="6">
+        <v-row align="center" justify="center">
+          <v-icon large color="black">mdi-logout</v-icon>
+          <BotonSalir />
+        </v-row>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
-import { VIcon } from 'vuetify/components'
-
-const router = useRouter()
-
-const navigateTo = (route) => {
-  router.push({ name: route })
-}
+import BotonCrearCuenta from '@/components/Botones/BotonCrearCuenta.vue'
+import BotonEstadoCuentaCols from '@/components/Botones/BotonEstadoCuentaCols.vue'
+import BotonEstadoCuentaDols from '@/components/Botones/BotonEstadoCuentaDols.vue'
+import BotonCambiarPin from '@/components/Botones/BotonCambiarPin.vue'
+import BotonEliminarCuenta from '@/components/Botones/BotonEliminarCuenta.vue'
+import BotonSalir from '@/components/Botones/BotonSalir.vue'
 </script>
 
 <style scoped>
@@ -101,7 +86,7 @@ const navigateTo = (route) => {
 
 .v-btn {
   width: 100%;
-  max-width: 700px;
+  max-width: 750px;
   font-size: 1.2rem;
   padding: 25px;
   white-space: normal;
@@ -110,7 +95,7 @@ const navigateTo = (route) => {
 }
 
 .long-btn {
-  max-width: 700px;
+  max-width: 750px;
 }
 
 .custom-btn {

@@ -5,7 +5,7 @@
         <img src="@/assets/LogoTec.png" alt="Logo Tecnológico de Costa Rica" class="logo" />
       </v-col>
       <v-col cols="auto">
-        <h1 class="title">Bienvenido a la página de CAC-TEC</h1>
+        <h1 class="title title-background">Bienvenido a la página de CAC-TEC</h1>
       </v-col>
       <v-col cols="auto"></v-col>
     </v-row>
@@ -69,6 +69,12 @@ import BotonEstatus from '@/components/Botones/BotonEstatus.vue' // Importar el 
   font-weight: bold;
   color: #2c3e50;
   margin-bottom: 40px;
+}
+
+.title-background {
+  background-color: #74b2e7;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .button-row {
