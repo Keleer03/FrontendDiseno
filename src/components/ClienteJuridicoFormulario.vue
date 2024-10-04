@@ -1,87 +1,103 @@
 <template>
-  <v-form ref="formClienteJuridico" v-model="valid" lazy-validation>
-    <v-container>
-      <v-row>
-        <v-col cols="12">
-          <v-card class="pa-3 green lighten-2">
-            <h1 class="white--text">Crear Cliente Jurídico</h1>
-          </v-card>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" md="6" class="pa-2">
-          <v-text-field
-            label="Nombre del generalisimo"
-            v-model="clienteJuridico.nombreCliente"
-            :rules="[rules.required]"
-            required
-          />
-        </v-col>
-        <v-col cols="12" md="6" class="pa-2">
-          <v-text-field
-            label="Cédula Jurídica"
-            v-model="clienteJuridico.cedulaJuridica"
-            :rules="[rules.required, rules.cedulaJuridica]"
-            required
-          />
-        </v-col>
-        <v-col cols="12" md="12" class="pa-2">
-          <v-text-field
-            label="Correo Electrónico"
-            v-model="clienteJuridico.correoElectronico"
-            :rules="[rules.required, rules.email]"
-            required
-          />
-        </v-col>
-        <v-col cols="12" md="6" class="pa-2">
-          <v-text-field
-            label="Número Telefónico"
-            v-model="clienteJuridico.numeroTelefono"
-            :rules="[rules.required, rules.telefono]"
-            required
-          />
-        </v-col>
-        <v-col cols="12" md="6" class="pa-2">
-          <v-select
-            label="Categoría de Cliente"
-            v-model="clienteJuridico.categoriaCliente"
-            :items="['Fisico', 'Juridico']"
-            :rules="[rules.required]"
-            required
-          />
-        </v-col>
-        <v-col cols="12" md="6" class="pa-2">
-          <v-text-field
-            label="Tipo de Negocio"
-            v-model="clienteJuridico.tipoNegocio"
-            :rules="[rules.required]"
-            required
-          />
-        </v-col>
-        <v-col cols="12" md="6" class="pa-2">
-          <v-text-field
-            label="Razón Social"
-            v-model="clienteJuridico.razonSocial"
-            :rules="[rules.required]"
-            required
-          />
-        </v-col>
-      </v-row>
+  <v-container fluid>
+    <v-row justify="center">
+      <v-col cols="12" md="10">
+        <v-card class="elevation-12">
+          <v-card-title class="title text-center"> Crear Cliente Jurídico </v-card-title>
+          <v-card-text>
+            <v-form ref="formClienteJuridico" v-model="valid" lazy-validation>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    label="Nombre del apoderado generalísimo"
+                    v-model="clienteJuridico.nombreCliente"
+                    :rules="[rules.required]"
+                    required
+                  />
+                </v-col>
 
-      <v-row>
-        <v-col cols="6" class="pa-2">
-          <v-btn color="blue" @click="goBack">Atrás</v-btn>
-        </v-col>
-        <v-col cols="6" class="pa-2">
-          <v-btn color="primary" @click="submitForm">Registrar</v-btn>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-form>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    label="Cédula Jurídica"
+                    v-model="clienteJuridico.cedulaJuridica"
+                    :rules="[rules.required]"
+                    required
+                  />
+                </v-col>
+
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    label="Correo Electrónico"
+                    v-model="clienteJuridico.correoElectronico"
+                    :rules="[rules.required]"
+                    required
+                  />
+                </v-col>
+
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    label="Número Telefónico"
+                    v-model="clienteJuridico.numeroTelefono"
+                    :rules="[rules.required]"
+                    required
+                  />
+                </v-col>
+
+                <v-col cols="12" md="6">
+                  <v-select
+                    label="Categoría de Cliente"
+                    v-model="clienteJuridico.categoriaCliente"
+                    :items="['Físico', 'Jurídico']"
+                    :rules="[rules.required]"
+                    required
+                  />
+                </v-col>
+
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    label="Tipo de Negocio"
+                    v-model="clienteJuridico.tipoNegocio"
+                    :rules="[rules.required]"
+                    required
+                  />
+                </v-col>
+
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    label="Razón Social"
+                    v-model="clienteJuridico.razonSocial"
+                    :rules="[rules.required]"
+                    required
+                  />
+                </v-col>
+              </v-row>
+
+              <!-- Botones en la misma fila -->
+              <v-row class="mt-4" justify="center">
+                <v-col cols="4" class="text-center">
+                  <BotonAtras />
+                  <!-- Botón de Atrás importado -->
+                </v-col>
+                <v-col cols="4" class="text-center">
+                  <v-btn color="green darken-1" @click="submitForm">Registrar</v-btn>
+                </v-col>
+                <v-col cols="4" class="text-center">
+                  <BotonSalir />
+                  <!-- Botón de Salir importado -->
+                </v-col>
+              </v-row>
+            </v-form>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import BotonAtras from '@/components/Botones/BotonAtras.vue'
+import BotonSalir from '@/components/Botones/BotonSalir.vue'
 
 const valid = ref(false)
 const clienteJuridico = ref({
@@ -95,43 +111,37 @@ const clienteJuridico = ref({
 })
 
 const rules = {
-  required: (value) => !!value || 'Campo requerido',
-  ///Quitar con validaciones del BACK END!!!!!!1
-  email: (value) => /.+@.+\..+/.test(value) || 'Correo electrónico inválido',
-  telefono: (value) => /^\d{8,10}$/.test(value) || 'El número debe tener entre 8 y 10 dígitos',
-  cedulaJuridica: (value) =>
-    /^\d{10}$/.test(value) || 'Cédula jurídica inválida (debe tener 10 dígitos)'
+  required: (value) => !!value || 'Campo requerido'
 }
-
+/*
 const submitForm = () => {
-  const form = ref(null)
-  if (form.value.validate()) {
+  if (formClienteJuridico.value.validate()) {
     console.log('Cliente jurídico creado:', clienteJuridico.value)
+    // Lógica para enviar los datos al back-end
   }
-}
-
-const goBack = () => {
-  console.log('Regresar a la página anterior')
-}
+}*/
 </script>
 
 <style scoped>
 .v-container {
-  max-width: 800px;
-  margin: 0 auto;
+  background: linear-gradient(to bottom right, #b9ece8, #43e4a1); /* Degradado en tonos verdes */
+  height: 100vh;
 }
 
-@media (max-width: 600px) {
-  .v-container {
-    max-width: 100%;
-    padding: 0 10px;
-  }
+.v-card {
+  margin: 20px;
+  background-color: papayawhip;
+  border-radius: 12px;
 }
 
-@media (min-width: 1200px) {
-  .v-container {
-    max-width: 1000px;
-    padding: 0 20px;
-  }
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+.v-row {
+  margin-bottom: 20px; /* Espaciado entre filas */
 }
 </style>
