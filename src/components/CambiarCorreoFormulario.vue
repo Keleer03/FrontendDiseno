@@ -20,14 +20,12 @@
               <v-row>
                 <v-col cols="4" class="text-center">
                   <BotonAtras />
-                  <!-- Botón de Atrás importado -->
                 </v-col>
                 <v-col cols="4" class="text-center">
                   <v-btn color="primary" @click="validarIdentidad">Validar Identidad</v-btn>
                 </v-col>
                 <v-col cols="4" class="text-center">
                   <BotonSalir />
-                  <!-- Botón de Salir importado -->
                 </v-col>
               </v-row>
 
@@ -96,41 +94,33 @@ const rules = {
   emailValido: (value) => /.+@.+\..+/.test(value) || 'Correo electrónico no válido'
 }
 
-const validarIdentidad = () => {
-  // Lógica para validar la identidad del cliente
-}
-
+/*
 const submitForm = () => {
-  // Lógica para enviar el formulario
   mensajeConfirmacion.value = `Estimado cliente, su correo ha sido actualizado correctamente.`
-}
+}*/
 </script>
 
 <style scoped>
 .v-container {
-  background: linear-gradient(
-    to bottom right,
-    #b9ece8,
-    #43e4a1
-  ); /* Fondo degradado en tonos verdes */
-  height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+  background: linear-gradient(to bottom right, #b9ece8, #43e4a1);
+  height: 100vh;
 }
 
 .v-card {
   margin: 20px;
-  background-color: #f9f9f9; /* Fondo claro para el formulario */
-  border-radius: 12px; /* Esquinas redondeadas */
+  background-color: #f9f9f9;
+  border-radius: 12px;
 }
 
 .title {
   font-size: 2.5rem;
   font-weight: bold;
   color: #2c3e50;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .v-row {
-  margin-bottom: 20px; /* Espaciado entre filas */
+  margin-bottom: 20px;
 }
 
 .text-center {

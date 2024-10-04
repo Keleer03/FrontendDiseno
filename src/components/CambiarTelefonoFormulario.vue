@@ -77,26 +77,18 @@ const mensajeConfirmacion = ref('')
 const rules = {
   required: (value) => !!value || 'Campo requerido'
 }
-
-const validarIdentidad = () => {
-  // Lógica para validar la identidad del cliente
-}
-
-const submitForm = () => {
-  // Lógica para enviar el formulario
-}
 </script>
 
 <style scoped>
 .v-container {
   background: linear-gradient(to bottom right, #b9ece8, #43e4a1);
-  height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+  height: 100vh;
 }
 
 .v-card {
   margin: 20px;
-  background-color: #f9f9f9; /* Fondo claro para el formulario */
-  border-radius: 12px; /* Esquinas redondeadas */
+  background-color: #f9f9f9;
+  border-radius: 12px;
 }
 
 .title {

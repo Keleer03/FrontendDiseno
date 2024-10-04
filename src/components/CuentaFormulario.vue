@@ -1,72 +1,83 @@
 <template>
-  <v-form ref="formCuenta" v-model="valid" lazy-validation>
-    <v-container>
-      <v-row>
-        <v-col cols="12">
-          <v-card class="pa-3 blue lighten-2">
-            <h1 class="white--text">Crear Cuenta</h1>
-          </v-card>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" md="6" class="pa-2">
-          <v-text-field
-            label="Identidad del cliente"
-            v-model="cuenta.identidadCliente"
-            :rules="[rules.required]"
-            required
-          />
-        </v-col>
-        <v-col cols="12" md="6" class="pa-2">
-          <v-text-field
-            label="PIN de la cuenta"
-            v-model="cuenta.pin"
-            :rules="[rules.required]"
-            required
-            type="password"
-          />
-        </v-col>
-        <v-col cols="12" md="6" class="pa-2">
-          <v-text-field
-            label="Monto del depósito inicial"
-            v-model="cuenta.saldo"
-            :rules="[rules.required]"
-            required
-          />
-        </v-col>
-        <v-col cols="12" md="6" class="pa-2">
-          <v-text-field
-            label="Fecha de creación"
-            v-model="cuenta.fechaCreacion"
-            type="date"
-            :rules="[rules.required]"
-            required
-          />
-        </v-col>
-        <v-col cols="12" md="6" class="pa-2">
-          <v-text-field
-            label="Estado de la cuenta"
-            v-model="cuenta.estado"
-            :rules="[rules.required]"
-            required
-            disabled
-          />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="6" class="pa-2">
-          <v-btn color="blue" @click="$emit('irAtras')">Atrás</v-btn>
-        </v-col>
-        <v-col cols="6" class="pa-2">
-          <v-btn color="primary" @click="submitForm">Registrar</v-btn>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-form>
+  <v-container fluid>
+    <v-row justify="center">
+      <v-col cols="12" md="10">
+        <v-card class="elevation-12">
+          <v-card-title class="title text-center">Crear Cuenta</v-card-title>
+          <v-card-text>
+            <v-form ref="formCuenta" v-model="valid" lazy-validation>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    label="Identidad del cliente"
+                    v-model="cuenta.identidadCliente"
+                    :rules="[rules.required]"
+                    required
+                  />
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    label="PIN de la cuenta"
+                    v-model="cuenta.pin"
+                    :rules="[rules.required]"
+                    required
+                    type="password"
+                  />
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    label="Monto del depósito inicial"
+                    v-model="cuenta.saldo"
+                    :rules="[rules.required]"
+                    required
+                  />
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    label="Fecha de creación"
+                    v-model="cuenta.fechaCreacion"
+                    type="date"
+                    :rules="[rules.required]"
+                    required
+                  />
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    label="Estado de la cuenta"
+                    v-model="cuenta.estado"
+                    :rules="[rules.required]"
+                    required
+                    disabled
+                  />
+                </v-col>
+              </v-row>
+
+              <v-row>
+                <v-col cols="4" class="text-center">
+                  <BotonAtras />
+                </v-col>
+                <v-col cols="4" class="text-center">
+                  <v-btn color="primary" @click="submitForm">
+                    <v-icon left>mdi-account-plus</v-icon>
+                    Registrar
+                  </v-btn>
+                </v-col>
+                <v-col cols="4" class="text-center">
+                  <BotonSalir />
+                </v-col>
+              </v-row>
+            </v-form>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import BotonAtras from '@/components/Botones/BotonAtras.vue'
+import BotonSalir from '@/components/Botones/BotonSalir.vue'
 
 const valid = ref(false)
 const cuenta = ref({
@@ -81,38 +92,39 @@ const rules = {
   required: (value) => !!value || 'Campo requerido'
 }
 
-/*
 const submitForm = () => {
-  if (valid.value) {
-    const cuentaData = {
-      identidadCliente: cuenta.value.identidadCliente,
-      pin: cuenta.value.pin,
-      montoDeposito: String(cuenta.value.montoDeposito),
-      fechaCreacion: cuenta.value.fechaCreacion,
-      estado: cuenta.value.estado
-    }
-    console.log('Datos de la cuenta a registrar:', cuentaData)
-  }
-}*/
+  // Lógica para enviar el formulario
+}
 </script>
 
 <style scoped>
 .v-container {
-  max-width: 800px;
-  margin: 0 auto;
+  background: linear-gradient(to bottom right, #b9ece8, #43e4a1);
+  height: 100vh;
 }
 
-@media (max-width: 600px) {
-  .v-container {
-    max-width: 100%;
-    padding: 0 10px;
-  }
+.v-card {
+  margin: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
 }
 
-@media (min-width: 1200px) {
-  .v-container {
-    max-width: 1000px;
-    padding: 0 20px;
-  }
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.v-row {
+  margin-bottom: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.v-btn {
+  margin: 10px 0;
 }
 </style>

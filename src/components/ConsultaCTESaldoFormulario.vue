@@ -34,11 +34,9 @@
               <v-row class="mt-4">
                 <v-col cols="6" class="text-center">
                   <BotonAtras />
-                  <!-- Botón de Atrás importado -->
                 </v-col>
                 <v-col cols="6" class="text-center">
                   <BotonSalir />
-                  <!-- Botón de Salir importado -->
                 </v-col>
               </v-row>
             </v-form>
@@ -61,37 +59,29 @@ const mensajeError = ref('')
 const rules = {
   required: (value) => !!value || 'Campo requerido'
 }
-
-const consultarCuentas = () => {
-  // Lógica para consultar las cuentas del cliente
-}
 </script>
 
 <style scoped>
 .v-container {
-  background: linear-gradient(
-    to bottom right,
-    #b9ece8,
-    #43e4a1
-  ); /* Fondo degradado en tonos verdes */
-  height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+  background: linear-gradient(to bottom right, #b9ece8, #43e4a1);
+  height: 100vh;
 }
 
 .v-card {
   margin: 20px;
-  background-color: #f9f9f9; /* Fondo claro para el formulario */
-  border-radius: 12px; /* Esquinas redondeadas */
+  background-color: #f9f9f9;
+  border-radius: 12px;
 }
 
 .title {
   font-size: 2.5rem;
   font-weight: bold;
   color: #2c3e50;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .v-row {
-  margin-bottom: 20px; /* Espaciado entre filas */
+  margin-bottom: 20px;
 }
 
 .text-center {

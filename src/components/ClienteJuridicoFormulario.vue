@@ -72,18 +72,15 @@
                 </v-col>
               </v-row>
 
-              <!-- Botones en la misma fila -->
               <v-row class="mt-4" justify="center">
                 <v-col cols="4" class="text-center">
                   <BotonAtras />
-                  <!-- Botón de Atrás importado -->
                 </v-col>
                 <v-col cols="4" class="text-center">
                   <v-btn color="green darken-1" @click="submitForm">Registrar</v-btn>
                 </v-col>
                 <v-col cols="4" class="text-center">
                   <BotonSalir />
-                  <!-- Botón de Salir importado -->
                 </v-col>
               </v-row>
             </v-form>
@@ -124,7 +121,7 @@ const submitForm = () => {
 
 <style scoped>
 .v-container {
-  background: linear-gradient(to bottom right, #b9ece8, #43e4a1); /* Degradado en tonos verdes */
+  background: linear-gradient(to bottom right, #b9ece8, #43e4a1); 
   height: 100vh;
 }
 
@@ -138,10 +135,10 @@ const submitForm = () => {
   font-size: 2.5rem;
   font-weight: bold;
   color: #2c3e50;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .v-row {
-  margin-bottom: 20px; /* Espaciado entre filas */
+  margin-bottom: 20px;
 }
 </style>

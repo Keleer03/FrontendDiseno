@@ -22,6 +22,7 @@ import EliminarCuenta from '@/views/EliminarCuenta.vue'
 import MenuClientes from '@/views/MenuClientes.vue'
 import MenuCuentas from '@/views/MenuCuentas.vue'
 import MenuTransacciones from '@/views/MenuTransacciones.vue'
+import RealizarTransferencia from '@/views/RealizarTransferencia.vue'
 
 const routes = [
   {
@@ -138,6 +139,11 @@ const routes = [
     path: '/menu-cuentas',
     name: 'MenuCuentas',
     component: MenuCuentas
+  },
+  {
+    path: '/realizar-transferencia',
+    name: 'RealizarTransferencia',
+    component: RealizarTransferencia
   }
 ]
 

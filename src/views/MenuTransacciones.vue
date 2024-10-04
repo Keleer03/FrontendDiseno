@@ -28,9 +28,7 @@
       </v-col>
       <v-col cols="12" sm="4" class="text-center">
         <v-icon large color="black">mdi-transfer</v-icon>
-        <v-btn color="primary" class="ma-2 custom-btn" @click="navigateTo('transferencia')">
-          Transferencia
-        </v-btn>
+        <BotonTransferencia />
       </v-col>
       <v-col cols="12" sm="4" class="text-center">
         <v-icon large color="black">mdi-file-document-outline</v-icon>
@@ -67,6 +65,7 @@ import BotonRealizarRetiroCols from '@/components/Botones/BotonRealizarRetiroCol
 import BotonRealizarRetiroDols from '@/components/Botones/BotonRealizarRetiroDols.vue'
 import BotonTransaccionesHechas from '@/components/Botones/BotonTransaccionesHechas.vue'
 import BotonSalir from '@/components/Botones/BotonSalir.vue'
+import BotonTransferencia from '@/components/Botones/BotonTransferencia.vue'
 </script>
 
 <style scoped>

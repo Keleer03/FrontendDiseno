@@ -1,101 +1,108 @@
 <template>
-  <v-form ref="formRetiro" v-model="valid" lazy-validation>
-    <v-container>
-      <v-row>
-        <v-col cols="12">
-          <v-card class="pa-3 blue lighten-2">
-            <h1 class="white--text">Realizar Retiro con Compra de Moneda</h1>
-          </v-card>
-        </v-col>
-      </v-row>
+  <v-container fluid>
+    <v-row justify="center">
+      <v-col cols="12" md="10">
+        <v-card class="elevation-12">
+          <v-card-title class="title text-center">Realizar Depósito en Colones</v-card-title>
+          <v-card-text>
+            <v-form ref="formDeposito" v-model="valid" lazy-validation>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    label="Número de cuenta"
+                    v-model="deposito.numeroCuenta"
+                    :rules="[rules.required]"
+                    required
+                  />
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    label="Monto del depósito"
+                    v-model="deposito.monto"
+                    :rules="[rules.required]"
+                    required
+                  />
+                </v-col>
+              </v-row>
 
-      <v-row>
-        <v-col cols="12" md="6" class="pa-2">
-          <v-text-field
-            label="Número de cuenta"
-            v-model="retiro.numeroCuenta"
-            :rules="[rules.required]"
-            required
-          />
-        </v-col>
-        <v-col cols="12" md="6" class="pa-2">
-          <v-text-field
-            label="PIN actual"
-            v-model="retiro.pin"
-            :rules="[rules.required]"
-            required
-            type="password"
-          />
-        </v-col>
-      </v-row>
+              <v-row>
+                <v-col cols="4" class="text-center">
+                  <BotonAtras />
+                </v-col>
+                <v-col cols="4" class="text-center">
+                  <v-btn color="primary" @click="submitForm">
+                    <v-icon left>mdi-cash-plus</v-icon>
+                    Realizar Depósito
+                  </v-btn>
+                </v-col>
+                <v-col cols="4" class="text-center">
+                  <BotonSalir />
+                </v-col>
+              </v-row>
 
-      <v-row v-if="mensajeEnviado" class="pa-2">
-        <v-col cols="12">
-          <v-alert type="info"
-            >Se ha enviado una palabra por mensaje de texto, por favor revísela y digitela a
-            continuación.</v-alert
-          >
-        </v-col>
-      </v-row>
-
-      <v-row v-if="mensajeEnviado">
-        <v-col cols="12" md="6" class="pa-2">
-          <v-text-field
-            label="Palabra recibida"
-            v-model="retiro.palabraRecibida"
-            :rules="[rules.required]"
-            required
-          />
-        </v-col>
-        <v-col cols="12" md="6" class="pa-2">
-          <v-text-field
-            label="Monto del retiro (USD)"
-            v-model="retiro.montoRetiro"
-            :rules="[rules.required]"
-            required
-          />
-        </v-col>
-      </v-row>
-
-      <v-row>
-        <v-col cols="6" class="pa-2">
-          <v-btn color="blue" @click="irAtras">Atrás</v-btn>
-        </v-col>
-        <v-col cols="6" class="pa-2">
-          <v-btn color="primary" @click="submitForm">Realizar Retiro</v-btn>
-        </v-col>
-      </v-row>
-
-      <v-row v-if="mensaje" class="pa-2">
-        <v-col cols="12">
-          <v-alert type="success">{{ mensaje }}</v-alert>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-form>
+              <v-row v-if="mensaje" class="pa-2">
+                <v-col cols="12">
+                  <v-alert type="success">{{ mensaje }}</v-alert>
+                </v-col>
+              </v-row>
+            </v-form>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import BotonAtras from '@/components/Botones/BotonAtras.vue'
+import BotonSalir from '@/components/Botones/BotonSalir.vue'
 
 const valid = ref(false)
-const mensajeEnviado = ref(false)
-const mensaje = ref('')
-const retiro = ref({
+const deposito = ref({
   numeroCuenta: '',
-  pin: '',
-  palabraRecibida: '',
-  montoRetiro: ''
+  monto: ''
 })
+
+const mensaje = ref('')
 
 const rules = {
   required: (value) => !!value || 'Campo requerido'
+}
+
+const submitForm = () => {
+  // Lógica para enviar el formulario
 }
 </script>
 
 <style scoped>
 .v-container {
-  max-width: 800px;
-  margin: 0 auto;
+  background: linear-gradient(to bottom right, #b9ece8, #43e4a1);
+  height: 100vh;
+}
+
+.v-card {
+  margin: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.v-row {
+  margin-bottom: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.v-btn {
+  margin: 10px 0;
 }
 </style>
