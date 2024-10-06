@@ -72,8 +72,8 @@
 
 <script setup>
 import BotonSalir from '@/components/Botones/BotonSalir.vue'
-import BotonRegistrarClienteFisico from '@/components/Botones/BotonRegistrarClienteFisico.vue'
-import BotonRegistrarClienteJuridico from '@/components/Botones/BotonRegistrarClienteJuridico.vue'
+import BotonRegistrarClienteFisico from '@/components/Botones/BotonPagrearClienteFisico.vue'
+import BotonRegistrarClienteJuridico from '@/components/Botones/BotonPagCrearClienteJuridico.vue'
 import BotonCambiarTelefono from '@/components/Botones/BotonCambiarTelefono.vue'
 import BotonCambiarCorreo from '@/components/Botones/BotonCambiarCorreo.vue'
 import BotonConsulCuentaConSuSaldo from '@/components/Botones/BotonConsulCuentaConSuSaldo.vue'

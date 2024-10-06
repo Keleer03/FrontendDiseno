@@ -44,7 +44,7 @@
 </template>
 
 <script setup>
-import BotonCrearCuenta from '@/components/Botones/BotonCrearCuenta.vue'
+import BotonCrearCuenta from '@/components/Botones/BotonPagCrearCuenta.vue'
 import BotonEstadoCuentaCols from '@/components/Botones/BotonEstadoCuentaCols.vue'
 import BotonEstadoCuentaDols from '@/components/Botones/BotonEstadoCuentaDols.vue'
 import BotonCambiarPin from '@/components/Botones/BotonCambiarPin.vue'

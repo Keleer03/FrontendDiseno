@@ -57,15 +57,15 @@
 </template>
 
 <script setup>
-import BotonRealizarDepositoCols from '@/components/Botones/BotonRealizarDepositoCols.vue'
-import BotonRealizarDepositoDols from '@/components/Botones/BotonRealizarDepositoDols.vue'
+import BotonRealizarDepositoCols from '@/components/Botones/BotonPagRealizarDepositoCols.vue'
+import BotonRealizarDepositoDols from '@/components/Botones/BotonPagRealizarDepositoDols.vue'
 import BotonConsultarSaldoCols from '@/components/Botones/BotonConsultarSaldoCols.vue'
 import BotonConsultarSaldoDols from '@/components/Botones/BotonConsultarSaldoDols.vue'
-import BotonRealizarRetiroCols from '@/components/Botones/BotonRealizarRetiroCols.vue'
-import BotonRealizarRetiroDols from '@/components/Botones/BotonRealizarRetiroDols.vue'
+import BotonRealizarRetiroCols from '@/components/Botones/BotonPagRealizarRetiroCols.vue'
+import BotonRealizarRetiroDols from '@/components/Botones/BotonPagRealizarRetiroDols.vue'
 import BotonTransaccionesHechas from '@/components/Botones/BotonTransaccionesHechas.vue'
 import BotonSalir from '@/components/Botones/BotonSalir.vue'
-import BotonTransferencia from '@/components/Botones/BotonTransferencia.vue'
+import BotonTransferencia from '@/components/Botones/BotonPagTransferencia.vue'
 </script>
 
 <style scoped>

@@ -2,12 +2,14 @@
   <v-container class="fill-height" fluid>
     <v-row align="center" justify="space-between">
       <v-col cols="auto">
-        <img src="@/assets/LogoTec.png" alt="Logo Tecnológico de Costa Rica" class="logo" />
+        <img src="@/assets/LogoTec.png" alt="Logo Tecnológico de Costa Rica" class="logo-left" />
       </v-col>
       <v-col cols="auto">
         <h1 class="title title-background">Bienvenido a la página de CAC-TEC</h1>
       </v-col>
-      <v-col cols="auto"></v-col>
+      <v-col cols="auto">
+        <img src="@/assets/LogoATI.png" alt="Logo ATI" class="logo-right" />
+      </v-col>
     </v-row>
 
     <v-row align="center" justify="center" class="button-row">
@@ -40,10 +42,10 @@
 
 <script setup>
 import BotonCliente from '@/components/Botones/BotonCliente.vue' // Importar el botón de Cliente
-import BotonCuenta from '@/components/Botones/BotonCuenta.vue' // Importar el botón de Cuentas
-import BotonTransacciones from '@/components/Botones/BotonTransacciones.vue' // Importar el botón de Transacciones
+import BotonCuenta from '@/components/Botones/BotonPagCuenta.vue' // Importar el botón de Cuentas
+import BotonTransacciones from '@/components/Botones/BotonPagTransacciones.vue' // Importar el botón de Transacciones
 import BotonTipoCambio from '@/components/Botones/BotonTipoCambio.vue' // Importar el botón de Tipo de Cambio
-import BotonEstatus from '@/components/Botones/BotonEstatus.vue' // Importar el botón de Estado de Cuenta
+import BotonEstatus from '@/components/Botones/BotonEstatus.vue' 
 </script>
 
 <style scoped>
@@ -57,11 +59,18 @@ import BotonEstatus from '@/components/Botones/BotonEstatus.vue' // Importar el 
   background: linear-gradient(135deg, #c2cee0, #2867cc); /* Fondo uniforme */
 }
 
-.logo {
+.logo-left {
   width: 300px;
   position: absolute;
   top: 10px;
   left: 10px;
+}
+
+.logo-right {
+  width: 300px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .title {
@@ -111,3 +120,5 @@ import BotonEstatus from '@/components/Botones/BotonEstatus.vue' // Importar el 
   font-size: 4rem;
 }
 </style>
+
+

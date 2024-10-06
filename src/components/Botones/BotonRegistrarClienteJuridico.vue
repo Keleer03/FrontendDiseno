@@ -1,14 +1,25 @@
 <template>
-  <v-btn color="primary" @click="goToClienteJuridico"> Cliente Jurídico</v-btn>
+  <v-btn color="blue darken-1" @click="registrarCliente">Registrar Cliente Jurídico</v-btn>
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
+import { defineProps } from 'vue'
+import ClienteJuridicoService from '../services/ClienteJuridicoService'
 
-const router = useRouter()
+const props = defineProps({
+  cliente: {
+    type: Object,
+    required: true
+  }
+})
 
-const goToClienteJuridico = () => {
-  router.push('/crear-cliente-juridico')
+const registrarCliente = async () => {
+  try {
+    await ClienteJuridicoService.crearCliente(props.cliente)
+    alert('Cliente jurídico registrado con éxito.')
+  } catch (error) {
+    alert(`Error al registrar el cliente: ${error}`)
+  }
 }
 </script>
 
