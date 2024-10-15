@@ -9,42 +9,32 @@
               <v-row>
                 <v-col cols="12" md="6">
                   <v-text-field
-                    label="Identidad del cliente (ID/Razón Social)"
-                    v-model="cliente.identidad"
+                    label="ID del Cliente"
+                    v-model="clienteSeleccionado"
                     :rules="[rules.required]"
                     required
                   />
                 </v-col>
-              </v-row>
-
-              <v-row>
-                <v-col cols="4" class="text-center">
-                  <BotonAtras />
-                </v-col>
-                <v-col cols="4" class="text-center">
-                  <v-btn color="primary" @click="validarIdentidad">Validar Identidad</v-btn>
-                </v-col>
-                <v-col cols="4" class="text-center">
-                  <BotonSalir />
+                <v-col cols="12" md="6">
+                  <v-btn color="blue darken-1" @click="buscarCliente">Buscar Cliente</v-btn>
                 </v-col>
               </v-row>
 
-              <v-row v-if="datosCliente">
+              <v-row v-if="clienteEncontrado">
                 <v-col cols="12">
                   <v-card>
                     <v-card-title>Datos del Cliente</v-card-title>
                     <v-card-text>
                       <p>
-                        <strong>Nombre Completo o Razón Social:</strong>
-                        {{ datosCliente.nombreCompleto }}
+                        <strong>Correo Electrónico Actual:</strong>
+                        {{ correoActual }}
                       </p>
-                      <p><strong>Correo Electrónico Actual:</strong> {{ datosCliente.correo }}</p>
                     </v-card-text>
                   </v-card>
                 </v-col>
               </v-row>
 
-              <v-row v-if="datosCliente">
+              <v-row v-if="clienteEncontrado">
                 <v-col cols="12" md="6">
                   <v-text-field
                     label="Nueva Dirección de Correo Electrónico"
@@ -55,9 +45,18 @@
                 </v-col>
               </v-row>
 
-              <v-row v-if="datosCliente">
+              <v-row v-if="clienteEncontrado">
                 <v-col cols="12" class="text-center">
                   <v-btn color="green darken-1" @click="submitForm">Cambiar Correo</v-btn>
+                </v-col>
+              </v-row>
+
+              <v-row justify="center">
+                <v-col cols="4" class="pa-2">
+                  <BotonAtras />
+                </v-col>
+                <v-col cols="4" class="pa-2">
+                  <BotonSalir />
                 </v-col>
               </v-row>
 
@@ -65,6 +64,13 @@
                 <v-col cols="12" class="pa-2">
                   <v-alert type="success">
                     {{ mensajeConfirmacion }}
+                  </v-alert>
+                </v-col>
+              </v-row>
+              <v-row v-if="mensajeError">
+                <v-col cols="12" class="pa-2">
+                  <v-alert type="error">
+                    {{ mensajeError }}
                   </v-alert>
                 </v-col>
               </v-row>
@@ -78,26 +84,54 @@
 
 <script setup>
 import { ref } from 'vue'
+import axios from 'axios'
 import BotonAtras from '@/components/Botones/BotonAtras.vue'
 import BotonSalir from '@/components/Botones/BotonSalir.vue'
 
 const valid = ref(false)
-const cliente = ref({
-  identidad: ''
-})
-const datosCliente = ref(null)
-const nuevoCorreo = ref('')
+const clienteSeleccionado = ref('') // El ID del cliente introducido manualmente
+const clienteEncontrado = ref(false) // Indica si el cliente existe
+const correoActual = ref('') // El correo actual del cliente
+const nuevoCorreo = ref('') // El nuevo correo a ingresar
 const mensajeConfirmacion = ref('')
+const mensajeError = ref('')
 
 const rules = {
   required: (value) => !!value || 'Campo requerido',
   emailValido: (value) => /.+@.+\..+/.test(value) || 'Correo electrónico no válido'
 }
 
-/*
-const submitForm = () => {
-  mensajeConfirmacion.value = `Estimado cliente, su correo ha sido actualizado correctamente.`
-}*/
+// Función para buscar el cliente por su ID
+const buscarCliente = async () => {
+  try {
+    const response = await axios.get(
+      `http://localhost:8080/api/clientes/${clienteSeleccionado.value}`
+    )
+    const cliente = response.data
+    clienteEncontrado.value = true
+    correoActual.value = cliente.correoElectronico // Asigna el correo actual
+    mensajeError.value = '' // Resetea el mensaje de error
+  } catch (error) {
+    clienteEncontrado.value = false
+    mensajeError.value = 'Cliente no encontrado'
+  }
+}
+
+// Función para enviar el formulario y actualizar el correo
+const submitForm = async () => {
+  if (valid.value && clienteEncontrado.value) {
+    try {
+      await axios.put(`http://localhost:8080/api/clientes/correo/${clienteSeleccionado.value}`, {
+        correoElectronico: nuevoCorreo.value
+      })
+      mensajeConfirmacion.value = 'Correo electrónico actualizado exitosamente.'
+      mensajeError.value = '' // Limpiar el mensaje de error
+    } catch (error) {
+      console.error('Error al cambiar el correo:', error.response?.data || error)
+      mensajeError.value = 'Error al cambiar el correo electrónico. Inténtalo de nuevo.'
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -117,13 +151,5 @@ const submitForm = () => {
   font-weight: bold;
   color: #2c3e50;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.v-row {
-  margin-bottom: 20px;
-}
-
-.text-center {
-  text-align: center;
 }
 </style>

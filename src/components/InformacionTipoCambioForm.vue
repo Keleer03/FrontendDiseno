@@ -45,12 +45,37 @@
 
 <script setup>
 import { ref } from 'vue'
+import axios from 'axios'
 import BotonSalir from '@/components/Botones/BotonSalir.vue'
 
 const tipoCambioCompra = ref(null)
 const tipoCambioVenta = ref(null)
 const errorCompra = ref(null)
 const errorVenta = ref(null)
+
+const consultarTipoCambioCompra = async () => {
+  try {
+    const response = await axios.get('http://localhost:8080/api/tipo-cambio/compra')
+    tipoCambioCompra.value = response.data
+    errorCompra.value = null
+  } catch (error) {
+    console.error(error)
+    errorCompra.value = 'Error al obtener tipo de cambio de compra'
+    tipoCambioCompra.value = null
+  }
+}
+
+const consultarTipoCambioVenta = async () => {
+  try {
+    const response = await axios.get('http://localhost:8080/api/tipo-cambio/venta')
+    tipoCambioVenta.value = response.data
+    errorVenta.value = null
+  } catch (error) {
+    console.error(error)
+    errorVenta.value = 'Error al obtener tipo de cambio de venta'
+    tipoCambioVenta.value = null
+  }
+}
 </script>
 
 <style scoped>

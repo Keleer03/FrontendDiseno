@@ -11,7 +11,6 @@
 <script setup>
 import CuentaFormulario from '@/components/CuentaFormulario.vue'
 
-//Para maneajar la logica cuando se cree
 const handleCuentaCreada = (cuenta) => {
   console.log('Cuenta creada:', cuenta)
 }
@@ -22,3 +21,6 @@ const handleCuentaCreada = (cuenta) => {
   min-height: 100vh;
 }
 </style>
+
+
+
